@@ -1,13 +1,5 @@
 <html>
     <head>
-        <style>
-            input
-            {
-                margin: center;
-                padding: center;
-                float: center;
-            }
-        </style>
     </head>
     <body>
         <?php
@@ -21,7 +13,7 @@
 
             for($z=0;$z<10;$z++)
             {
-            echo '<div class="styl"><b>pytanie '.$z.': '.$tabelapytan[$z]["content"].'</b><br>';
+            echo '<b>pytanie '.$z.': '.$tabelapytan[$z]["content"].'</b><br>';
                 for($i=0;$i<count($tabelaodpowiedzi);$i++)
                 {
                     if($tabelaodpowiedzi[$i]["questions_id"]==$tabelapytan[$z]["id"])
@@ -30,7 +22,7 @@
                     }
                 }
             }
-            echo '<input type="submit"></form><br>';
+            echo '<input type="submit"></form></div><br>';
         ?>
     </body>
 </html>

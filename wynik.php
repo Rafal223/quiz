@@ -8,25 +8,30 @@
         $pytania = $con -> query("SELECT id,content FROM questions");
         $tabelapytan = $pytania->fetch_all(MYSQLI_ASSOC);
 
+        $prawidlowe = 0;
         for($i=0;$i<10;$i++)
         {
         foreach($_POST as $key=>$value)
         {
             if($key==$tabelapytan[$i]["id"])
             {
-                echo $key.': ';
-                echo ''.$tabelapytan[$i]["content"].'<br>';
+                echo '<b>'.$key.' ';
+                echo ''.$tabelapytan[$i]["content"].':</b> ';
                 if($value==0)
                 {
-                    echo 'Zła odpowiedź<br>';
+                    echo 'Zła odpowiedż✖<br>';
                 }
                 else if($value==1)
                 {
-                    echo 'Dobra odpowiedź<br>';
+                    echo 'Dobra odpowiedź✔<br>';
+                    $prawidlowe++;
                 }
             }
         }
         }
+        echo '<br>Wynik: '.$prawidlowe.'/'.count($tabelapytan).'<br>Procent: ';
+        echo 100*$prawidlowe/count($tabelapytan);
+        echo '%';
     ?>
 </body>
 </html>
